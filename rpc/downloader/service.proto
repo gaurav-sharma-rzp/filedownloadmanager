@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package test.filedownloadmanager.downloader;
+option go_package = "downloader";
+
+// Haberdasher service makes hats for clients.
+service Downloader {
+  // MakeHat produces a hat of mysterious, randomly-selected color!
+  rpc MakeHat(Size) returns (Hat);
+  rpc Health(HealthParams) returns (HealthStatus);
+}
+
+// Size of a Hat, in inches.
+message Size {
+  int32 inches = 1; // must be > 0
+}
+
+// A Hat is a piece of headwear made by a Haberdasher.
+message Hat {
+  int32 inches = 1;
+  string color = 2; // anything but "invisible"
+  string name = 3; // i.e. "bowler"
+}
+
+// no input param required for health
+message HealthParams {}
+
+// A Hat is a piece of headwear made by a Haberdasher.
+message HealthStatus {
+  string health = 1;
+}
